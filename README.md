@@ -35,12 +35,12 @@ Putar sound effect dengan shortcut keyboard global — bahkan saat OBS atau game
 
 ## 📋 Requirements
 
-| Requirement | Versi |
-|---|---|
-| Linux | Ubuntu 22.04+ / Debian / Fedora / Arch |
-| Python | 3.8+ |
-| Desktop | GNOME (X11) |
-| ffmpeg | Untuk playback audio |
+| Requirement | Versi                                  |
+| ----------- | -------------------------------------- |
+| Linux       | Ubuntu 22.04+ / Debian / Fedora / Arch |
+| Python      | 3.8+                                   |
+| Desktop     | GNOME (X11)                            |
+| ffmpeg      | Untuk playback audio                   |
 
 > ⚠️ **Global shortcut membutuhkan X11**, bukan Wayland.
 > Cek dengan: `echo $XDG_SESSION_TYPE`
@@ -53,7 +53,7 @@ Putar sound effect dengan shortcut keyboard global — bahkan saat OBS atau game
 ### 1. Clone repo
 
 ```bash
-git clone https://github.com/USERNAME/streamboard.git
+git clone https://github.com/justnotiyann/streamboard.git
 cd streamboard
 ```
 
@@ -65,6 +65,7 @@ chmod +x install.sh
 ```
 
 Script ini otomatis mendeteksi distro (Ubuntu/Debian/Fedora/Arch) dan menginstall semua yang dibutuhkan:
+
 - System packages: `python3-gi`, `gtk3`, `ffmpeg`, dll
 - Python packages: `watchdog`, `pynput`
 
@@ -87,6 +88,7 @@ bash streamboard-service.sh install
 ```
 
 Ini akan:
+
 - ✅ Mendaftarkan StreamBoard sebagai **systemd user service**
 - ✅ Auto-start saat login
 - ✅ Menambahkan ke **GNOME app launcher** (tekan `Super`, cari "StreamBoard")
@@ -111,9 +113,11 @@ bash streamboard-service.sh remove   # hapus service & shortcut
 ### Tambah Sound
 
 Taruh file MP3/WAV/OGG ke folder:
+
 ```
 ~/StreamBoard/sounds/
 ```
+
 StreamBoard otomatis mendeteksi file baru — tidak perlu restart.
 
 Atau klik tombol **📁 SOUNDS FOLDER** di aplikasi.
@@ -127,13 +131,13 @@ Atau klik tombol **📁 SOUNDS FOLDER** di aplikasi.
 
 ### Tips Shortcut untuk Streamer
 
-| Sound | Shortcut yang direkomendasikan |
-|---|---|
-| Sound effect pendek | `F5` – `F8` |
-| Alert / notifikasi | `Ctrl+F1` |
-| Musik intro | `Alt+1` |
-| Outro / ending | `Alt+2` |
-| Reaction sound | `Ctrl+Shift+1` – `3` |
+| Sound               | Shortcut yang direkomendasikan |
+| ------------------- | ------------------------------ |
+| Sound effect pendek | `F5` – `F8`                    |
+| Alert / notifikasi  | `Ctrl+F1`                      |
+| Musik intro         | `Alt+1`                        |
+| Outro / ending      | `Alt+2`                        |
+| Reaction sound      | `Ctrl+Shift+1` – `3`           |
 
 > Hindari shortcut yang bentrok dengan OBS (`Ctrl+Alt+Del`, dll)
 
@@ -156,18 +160,20 @@ streamboard/
 ```
 
 **Konfigurasi disimpan di:**
+
 ```
 ~/.config/streamboard/config.json
 ```
 
 Contoh isi:
+
 ```json
 {
-  "shortcuts": {
-    "/home/user/StreamBoard/sounds/intro.mp3": "ctrl+1",
-    "/home/user/StreamBoard/sounds/drum.wav": "f5"
-  },
-  "volume": 80
+	"shortcuts": {
+		"/home/user/StreamBoard/sounds/intro.mp3": "ctrl+1",
+		"/home/user/StreamBoard/sounds/drum.wav": "f5"
+	},
+	"volume": 80
 }
 ```
 
@@ -187,6 +193,7 @@ python3 -c "from pynput import keyboard; print('OK')"
 ```
 
 Kalau Wayland: logout → di login screen klik ⚙️ → pilih **GNOME on Xorg**
+
 </details>
 
 <details>
@@ -202,6 +209,7 @@ sudo apt install ffmpeg
 # Test manual
 ffplay -nodisp -autoexit /path/to/file.mp3
 ```
+
 </details>
 
 <details>
@@ -214,6 +222,7 @@ sudo apt install gir1.2-appindicator3-0.1
 ```
 
 Lalu install ekstensinya di: https://extensions.gnome.org/extension/615/appindicator-support/
+
 </details>
 
 <details>
@@ -222,6 +231,7 @@ Lalu install ekstensinya di: https://extensions.gnome.org/extension/615/appindic
 ```bash
 sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0
 ```
+
 </details>
 
 <details>
@@ -233,6 +243,7 @@ Kalau masih error, jalankan manual:
 ```bash
 pip3 install --user --break-system-packages watchdog pynput
 ```
+
 </details>
 
 <details>
@@ -243,6 +254,7 @@ bash streamboard-service.sh log
 # atau
 journalctl --user -u streamboard.service -n 50
 ```
+
 </details>
 
 ---
